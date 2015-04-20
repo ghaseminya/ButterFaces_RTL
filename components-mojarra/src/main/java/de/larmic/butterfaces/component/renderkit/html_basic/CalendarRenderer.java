@@ -1,13 +1,18 @@
 package de.larmic.butterfaces.component.renderkit.html_basic;
 
-import de.larmic.butterfaces.component.html.HtmlCalendar;
-import de.larmic.butterfaces.component.partrenderer.*;
+import java.io.IOException;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 import javax.faces.render.FacesRenderer;
-import java.io.IOException;
+
+import de.larmic.butterfaces.component.html.HtmlCalendar;
+import de.larmic.butterfaces.component.partrenderer.InnerComponentWrapperPartRenderer;
+import de.larmic.butterfaces.component.partrenderer.OuterComponentWrapperPartRenderer;
+import de.larmic.butterfaces.component.partrenderer.RenderUtils;
+import de.larmic.butterfaces.component.partrenderer.StringUtils;
+import de.larmic.butterfaces.component.partrenderer.TooltipPartRenderer;
 
 @FacesRenderer(componentFamily = HtmlCalendar.COMPONENT_FAMILY, rendererType = HtmlCalendar.RENDERER_TYPE)
 public class CalendarRenderer extends AbstractTextRenderer<HtmlCalendar> {
@@ -27,7 +32,7 @@ public class CalendarRenderer extends AbstractTextRenderer<HtmlCalendar> {
             super.encodeSuperEnd(context, component);
             if (calendar.isPickDate() || calendar.isPickTime()) {
                 writer.startElement("span", component);
-                writer.writeAttribute("class", "input-group-addon", null);
+                writer.writeAttribute("class", "input-group-addon pointerCursor", null);
                 writer.startElement("span", component);
                 // jquery plugin will add icon here
                 writer.endElement("span");
