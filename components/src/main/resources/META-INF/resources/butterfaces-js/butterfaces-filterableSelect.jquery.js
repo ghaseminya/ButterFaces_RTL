@@ -67,14 +67,11 @@
             $select.hide();
 
             $("<span>")
-                    .addClass("input-group-btn")
+                    .addClass("input-group-addon")
+                    .addClass("pointerCursor")
                     .append(
-                    $("<button>")
-                            .addClass("btn btn-default")
-                            .html("&nbsp;")
-                            .append(
-                            $("<i>").addClass("fa fa-chevron-down")
-                    )
+                    $("<span>")
+                            .addClass("glyphicon glyphicon-chevron-down")
             )
                     .on("click", function (event) {
                         event.preventDefault();

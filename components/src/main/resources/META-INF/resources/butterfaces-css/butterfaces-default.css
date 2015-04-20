@@ -154,3 +154,7 @@ select.butter-input-component {
     border-radius: 4px;
     box-shadow: 2px 2px 4px #999;
 }
+
+.pointerCursor {
+   cursor: pointer;
+}
