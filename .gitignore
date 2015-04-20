@@ -30,3 +30,4 @@ target/
 *.log
 *~
 atlassian-ide-plugin.xml
+.DS_Store
