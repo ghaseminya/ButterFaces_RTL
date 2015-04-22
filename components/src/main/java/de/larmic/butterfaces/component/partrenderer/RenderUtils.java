@@ -58,7 +58,7 @@ public class RenderUtils {
 
         jsCall.append("jQuery(function () {");
         jsCall.append(createJQueryBySelector(elementId, childSelector));
-
+        jsCall.append('.');
         jsCall.append(pluginFunctionCall);
         jsCall.append(";");
         jsCall.append("});");
@@ -73,12 +73,12 @@ public class RenderUtils {
         jsCall.append("document.getElementById('");
         jsCall.append(elementId);
         jsCall.append("')");
-        jsCall.append(").");
+        jsCall.append(")");
 
         if (StringUtils.isNotEmpty(childSelector)) {
-            jsCall.append("find('");
+            jsCall.append(".find('");
             jsCall.append(childSelector);
-            jsCall.append("').");
+            jsCall.append("')");
         }
 
         return jsCall.toString();
