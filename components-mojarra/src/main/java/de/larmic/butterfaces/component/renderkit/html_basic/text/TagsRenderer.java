@@ -46,10 +46,10 @@ public class TagsRenderer extends AbstractTextRenderer<HtmlTags> {
     private String createJQueryPluginCallback(HtmlTags tags) {
         final StringBuilder jQueryPluginCall = new StringBuilder();
         jQueryPluginCall.append("on(\"itemAdded\", function (e) {");
-        jQueryPluginCall.append(RenderUtils.createJQueryBySelector(tags.getClientId(), ".butter-input-component") + "trigger('keyup');");
+        jQueryPluginCall.append(RenderUtils.createJQueryBySelector(tags.getClientId(), ".butter-input-component") + ".trigger('keyup');");
         jQueryPluginCall.append("})");
         jQueryPluginCall.append(".on(\"itemRemoved\", function (e) {");
-        jQueryPluginCall.append(RenderUtils.createJQueryBySelector(tags.getClientId(), ".butter-input-component") + "trigger('keyup');");
+        jQueryPluginCall.append(RenderUtils.createJQueryBySelector(tags.getClientId(), ".butter-input-component") + ".trigger('keyup');");
         jQueryPluginCall.append("})");
         return jQueryPluginCall.toString();
     }
