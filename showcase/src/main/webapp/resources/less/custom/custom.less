@@ -2,8 +2,21 @@ sub {
   bottom: 0.4em !important;
 }
 
+.fulWidthPart {
+  background-image: linear-gradient(120deg, #155799, #159957);
+  padding: 20px 0 35px 0;
+  margin-bottom: 20px;
+  & * {
+    color: white;
+  }
+}
+
+.butter-component-info {
+  margin-top: 15px;
+}
+
 .content {
-  margin-top: 70px;
+  margin-top: 50px;
 }
 
 .tagsContainer .input-group .input-group-addon {
@@ -14,9 +27,19 @@ sub {
   width: 130px;
 }
 
+.outputComponent .form-control {
+  height: auto;
+  min-height: 34px;
+  white-space: pre-wrap;
+}
+
 .input-group {
   width: 100%;
   margin-bottom: 10px;
+}
+
+.butter-component .input-group {
+  margin-bottom: 0;
 }
 
 .prettyprint ol.linenums > li {
@@ -52,6 +75,10 @@ li.mojarra {
 
 .linkTagMinWidth {
   min-width: 275px !important;
+}
+
+.largeBooleanControl {
+  min-width: 285px !important;
 }
 
 /*** LARMIC COMPONENTS - START *********************************************************/

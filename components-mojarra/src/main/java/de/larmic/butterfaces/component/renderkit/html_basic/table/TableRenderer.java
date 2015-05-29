@@ -140,6 +140,8 @@ public class TableRenderer extends de.larmic.butterfaces.component.renderkit.htm
                 writer.writeAttribute("onclick", ajaxRequest.createJavaScriptCall("sort_" + columnNumber, htmlTable.isAjaxDisableRenderRegionsOnRequest()), null);
             }
 
+            writer.startElement("div", table);
+
             // render header label
             writer.startElement("span", table);
             writer.writeAttribute("class", "butter-component-table-column-label", null);
@@ -148,7 +150,9 @@ public class TableRenderer extends de.larmic.butterfaces.component.renderkit.htm
 
             if (column.isSortColumnEnabled() && htmlTable.getTableSortModel() != null && ajaxRequest != null) {
                 writer.startElement("span", table);
-                final SortType sortType = htmlTable.getModel().getTableSortModel().getSortType(column.getId());
+                final String tableUniqueIdentifier = StringUtils.getNotNullValue(htmlTable.getUniqueIdentifier(), table.getId());
+                final String columnUniqueIdentifier = StringUtils.getNotNullValue(column.getUniqueIdentifier(), column.getId());
+                final SortType sortType = htmlTable.getModel().getTableSortModel().getSortType(tableUniqueIdentifier, columnUniqueIdentifier);
 
                 final StringBuilder sortSpanStyleClass = new StringBuilder("butter-component-table-column-sort-spinner ");
 
@@ -164,6 +168,8 @@ public class TableRenderer extends de.larmic.butterfaces.component.renderkit.htm
                 writer.endElement("span");
             }
 
+            writer.endElement("div");
+
             writer.endElement("th");
 
             columnNumber++;
@@ -174,7 +180,9 @@ public class TableRenderer extends de.larmic.butterfaces.component.renderkit.htm
 
     private boolean isHideColumn(final HtmlTable table, final HtmlColumn column) {
         if (table.getTableColumnDisplayModel() != null) {
-            final Boolean hideColumn = table.getTableColumnDisplayModel().isColumnHidden(column.getId());
+            final String tableUniqueIdentifier = StringUtils.getNotNullValue(table.getUniqueIdentifier(), table.getId());
+            final String columnUniqueIdentifier = StringUtils.getNotNullValue(column.getUniqueIdentifier(), column.getId());
+            final Boolean hideColumn = table.getTableColumnDisplayModel().isColumnHidden(tableUniqueIdentifier, columnUniqueIdentifier);
             if (hideColumn != null) {
                 return hideColumn;
             }
@@ -194,7 +202,6 @@ public class TableRenderer extends de.larmic.butterfaces.component.renderkit.htm
         writer.writeAttribute("class", "butter-table", null);
 
         writer.startElement("div", table);
-        writer.writeAttribute("id", this.getInnerTableId(table), "id");
 
         final String styleClass = (String) table.getAttributes().get("styleClass");
         if (styleClass != null) {
@@ -338,10 +345,12 @@ public class TableRenderer extends de.larmic.butterfaces.component.renderkit.htm
                     }
                 } else if ("sort".equals(event) && htmlTable.getModel() != null) {
                     final HtmlColumn sortedColumn = htmlTable.getCachedColumns().get(eventNumber);
-                    if (htmlTable.getTableSortModel().getSortType(sortedColumn.getId()) == SortType.ASCENDING) {
-                        htmlTable.getTableSortModel().sortColumn(sortedColumn.getId(), sortedColumn.getSortBy(), SortType.DESCENDING);
+                    final String tableUniqueIdentifier = StringUtils.getNotNullValue(htmlTable.getUniqueIdentifier(), htmlTable.getId());
+                    final String columnUniqueIdentifier = StringUtils.getNotNullValue(sortedColumn.getUniqueIdentifier(), sortedColumn.getId());
+                    if (htmlTable.getTableSortModel().getSortType(tableUniqueIdentifier, columnUniqueIdentifier) == SortType.ASCENDING) {
+                        htmlTable.getTableSortModel().sortColumn(tableUniqueIdentifier, columnUniqueIdentifier, sortedColumn.getSortBy(), SortType.DESCENDING);
                     } else {
-                        htmlTable.getTableSortModel().sortColumn(sortedColumn.getId(), sortedColumn.getSortBy(), SortType.ASCENDING);
+                        htmlTable.getTableSortModel().sortColumn(tableUniqueIdentifier, columnUniqueIdentifier, sortedColumn.getSortBy(), SortType.ASCENDING);
                     }
                 }
             } catch (NumberFormatException e) {
@@ -433,11 +442,5 @@ public class TableRenderer extends de.larmic.butterfaces.component.renderkit.htm
         }
 
         return false;
-    }
-
-    private String getInnerTableId(final UIComponent table) {
-        // TODO at this time it is not possible to render inner table.
-        //return table.getClientId() + "_table";
-        return table.getClientId();
     }
 }

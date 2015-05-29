@@ -1,8 +1,8 @@
 <ui:composition template="/WEB-INF/templates/defaultComponentBase.xhtml"
-                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:b="http://butterfaces.larmic.de/components"
-                xmlns:showcase="http://java.sun.com/jsf/composite/cc"
+                xmlns:showcase="http://xmlns.jcp.org/jsf/composite/cc"
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="header">
@@ -13,7 +13,6 @@
     <ui:define name="tagsContainers">
         <showcase:tagsContainer label="Tag attributes">
             <showcase:tagStringControl label="label" value="#{calendarShowcase.label}"/>
-            <showcase:tagStringControl label="tooltip" value="#{calendarShowcase.tooltip}"/>
             <showcase:tagBooleanControl label="hideLabel" value="#{calendarShowcase.hideLabel}"/>
             <showcase:tagBooleanControl label="readonly" value="#{calendarShowcase.readonly}"/>
             <showcase:tagBooleanControl label="required" value="#{calendarShowcase.required}"/>
@@ -42,6 +41,7 @@
                                      renderChildrenPopover="true"
                                      popoverTitle="Add ajax child"
                                      popoverContentMarkerClass="ajaxPopoverContent" />
+            <showcase:tagStringControl label="tooltip" value="#{calendarShowcase.tooltip}"/>
         </showcase:tagsContainer>
     </ui:define>
 
@@ -66,17 +66,19 @@
                         sideBySide="#{calendarShowcase.sideBySise}"
                         hideLabel="#{calendarShowcase.hideLabel}"
                         value="#{calendarShowcase.value}"
-                        tooltip="#{calendarShowcase.tooltip}"
                         readonly="#{calendarShowcase.readonly}"
                         required="#{calendarShowcase.required}"
                         rendered="#{calendarShowcase.rendered}"
                         placeholder="#{calendarShowcase.placeholder}"
                         autoFocus="#{calendarShowcase.autoFocus}"
                         styleClass="#{calendarShowcase.styleClass}">
-                <f:ajax event="keyup"
+                <f:ajax event="change"
                         execute="@this"
                         render="output:outputComponent:outputValues output:other"
                         disabled="#{not calendarShowcase.ajax}"/>
+                <b:tooltip rendered="#{not empty calendarShowcase.tooltip}">
+                    #{calendarShowcase.tooltip}
+                </b:tooltip>
             </b:calendar>
 
         </showcase:showcaseOuputComponent>

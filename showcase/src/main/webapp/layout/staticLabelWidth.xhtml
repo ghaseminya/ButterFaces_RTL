@@ -1,6 +1,6 @@
 <ui:composition template="/WEB-INF/templates/defaultJQueryBase.xhtml"
-                xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:showcase="http://java.sun.com/jsf/composite/cc"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:showcase="http://xmlns.jcp.org/jsf/composite/cc"
                 xmlns:b="http://butterfaces.larmic.de/components">
 
     <ui:define name="header">
@@ -9,28 +9,45 @@
 
     <ui:define name="example">
         <div class="col-md-4">
-            <b:text label="label" value="a test string"/>
-            <b:text label="label" value="a test string"/>
+            <b:text label="label" value="#{staticLabelWidthShowcase.textValue}"/>
+            <b:text label="label" value="#{staticLabelWidthShowcase.textValue}"/>
         </div>
         <div class="col-md-4">
-            <b:text label="label" value="a test string"/>
-            <b:text label="label" value="a test string"/>
+            <b:text label="label" value="#{staticLabelWidthShowcase.textValue}" readonly="true"/>
+            <b:text label="label" value="#{staticLabelWidthShowcase.textValue}"/>
         </div>
         <div class="col-md-4">
-            <b:text label="label" value="a test string"/>
-            <b:text label="label" value="a test string"/>
+            <b:text label="label" value="#{staticLabelWidthShowcase.textValue}"/>
+            <b:text label="label" value="#{staticLabelWidthShowcase.textValue}" readonly="true"/>
         </div>
+
         <div class="col-md-4">
-            <b:text label="label" value="a test string"/>
-            <b:text label="label" value="a test string"/>
+            <b:text label="label" value="#{staticLabelWidthShowcase.textValue}"/>
+            <b:text label="label" value="#{staticLabelWidthShowcase.textValue}"/>
         </div>
         <div class="col-md-8">
-            <b:text label="label" value="a test string"/>
-            <b:text label="label" value="a test string"/>
+            <b:calendar label="label" value="#{staticLabelWidthShowcase.calendarValue}"/>
+            <b:text label="label" value="#{staticLabelWidthShowcase.textValue}"/>
         </div>
+
         <div class="col-md-12">
-            <b:text label="label" value="a test string"/>
-            <b:text label="label" value="a test string"/>
+            <b:text label="label" value="#{staticLabelWidthShowcase.textValue}"/>
+            <b:text label="label" value="#{staticLabelWidthShowcase.textValue}"/>
+        </div>
+
+        <div class="col-md-6">
+            <b:textArea label="label" value="#{staticLabelWidthShowcase.textAreaValue}"/>
+        </div>
+        <div class="col-md-6">
+            <b:textArea label="label" value="#{staticLabelWidthShowcase.textAreaValue}" readonly="true"/>
+        </div>
+
+        <div class="col-md-4">
+            <b:text label="label" value="#{staticLabelWidthShowcase.textValue}"/>
+        </div>
+        <div class="col-md-8">
+            <b:checkBox label="label" value="#{staticLabelWidthShowcase.checkboxValue}"
+                    description="#{staticLabelWidthShowcase.checkboxDescription}"/>
         </div>
     </ui:define>
 

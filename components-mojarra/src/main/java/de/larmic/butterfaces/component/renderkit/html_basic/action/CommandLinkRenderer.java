@@ -4,10 +4,13 @@ import de.larmic.butterfaces.component.html.action.HtmlCommandLink;
 import de.larmic.butterfaces.component.partrenderer.StringUtils;
 import de.larmic.butterfaces.resolver.AjaxClientIdResolver;
 
+import javax.faces.component.EditableValueHolder;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UINamingContainer;
+import javax.faces.component.UIOutput;
 import javax.faces.component.behavior.AjaxBehavior;
 import javax.faces.component.behavior.ClientBehaviorHolder;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 import javax.faces.render.FacesRenderer;
@@ -37,6 +40,11 @@ public class CommandLinkRenderer extends com.sun.faces.renderkit.html_basic.Comm
     }
 
     @Override
+    protected boolean shouldWriteIdAttribute(UIComponent component) {
+        return true;
+    }
+
+    @Override
     protected void writeCommonLinkAttributes(final ResponseWriter writer, final UIComponent component) throws IOException {
         final HtmlCommandLink link = (HtmlCommandLink) component;
         final String styleClass = (String) component.getAttributes().get("styleClass");
@@ -49,6 +57,41 @@ public class CommandLinkRenderer extends com.sun.faces.renderkit.html_basic.Comm
 
         if (generatedStyleClass.length() > 0) {
             writer.writeAttribute("class", generatedStyleClass.toString(), "styleClass");
+        }
+    }
+
+    @Override
+    public void decode(FacesContext context, UIComponent component) {
+        final ExternalContext external = context.getExternalContext();
+        final Map<String, String> params = external.getRequestParameterMap();
+        final String resetValues = params.get("javax.faces.partial.resetValues");
+        final String render = params.get("javax.faces.partial.render");
+
+        if (StringUtils.isNotEmpty(resetValues) && StringUtils.isNotEmpty(render) && Boolean.valueOf(resetValues)) {
+            final String[] split = render.split(" ");
+
+            for (String clientId : split) {
+                final UIComponent renderComponent = context.getViewRoot().findComponent(clientId);
+                resetValues(renderComponent);
+            }
+        }
+
+        super.decode(context, component);
+    }
+
+    private void resetValues(final UIComponent component) {
+        if (component == null) {
+            return;
+        }
+
+        for (UIComponent child : component.getChildren()) {
+            resetValues(child);
+        }
+
+        if (component instanceof UIOutput) {
+            ((UIOutput) component).resetValue();
+        } else if (component instanceof EditableValueHolder) {
+            ((EditableValueHolder) component).resetValue();
         }
     }
 
@@ -90,7 +133,7 @@ public class CommandLinkRenderer extends com.sun.faces.renderkit.html_basic.Comm
 
         final String ajaxProcessingTextByWebXml = FacesContext.getCurrentInstance().getExternalContext().getInitParameter(WEB_XML_AJAX_PROCESSING_TEXT);
 
-        return StringUtils.isEmpty(ajaxProcessingTextByWebXml)  ? "Processing" : ajaxProcessingTextByWebXml;
+        return StringUtils.isEmpty(ajaxProcessingTextByWebXml) ? "Processing" : ajaxProcessingTextByWebXml;
     }
 
     @Override
