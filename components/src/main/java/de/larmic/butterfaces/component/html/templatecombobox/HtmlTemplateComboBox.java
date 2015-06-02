@@ -26,8 +26,8 @@ import java.util.List;
         @ResourceDependency(library = "butterfaces-external", name = "jquery.caret.min.js", target = "head"),
         @ResourceDependency(library = "butterfaces-external", name = "jquery.position.min.js", target = "head"),
         @ResourceDependency(library = "butterfaces-external", name = "mustache.min.js", target = "head"),
-        @ResourceDependency(library = "butterfaces-external", name = "trivial-combobox.min.js", target = "head"),
-        @ResourceDependency(library = "butterfaces-external", name = "trivial-combobox.min.css", target = "head")
+        @ResourceDependency(library = "butterfaces-external", name = "trivial-components.js", target = "head"),
+        @ResourceDependency(library = "butterfaces-external", name = "trivial-components.css", target = "head")
 })
 @FacesComponent(HtmlTemplateComboBox.COMPONENT_TYPE)
 public class HtmlTemplateComboBox extends HtmlInputText implements HtmlInputComponent, AutoFocus, ClientBehaviorHolder {

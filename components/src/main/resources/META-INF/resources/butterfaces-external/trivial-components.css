@@ -1,0 +1,239 @@
+/*
+ Copyright 2015 Yann Massard (Trivial Components)
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ */
+.tr-original-input {
+    tab-index: -1;
+    display: none;
+}
+.tr-combobox {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    background-color: white;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+.tr-combobox.focus {
+    border-color: #66afe9;
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+.tr-combobox.open {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.tr-combobox,
+.tr-combobox * {
+    box-sizing: border-box;
+}
+.tr-combobox-selected-entry-wrapper {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 0 auto;
+    flex: 1 0 auto;
+}
+.tr-combobox-edit-input {
+    width: 0;
+    height: 0;
+    position: absolute;
+    border: none;
+    padding: 0 0;
+    outline: none;
+    background-color: white;
+    z-index: 1;
+    font-size: 14px;
+}
+.tr-combobox-trigger {
+    -webkit-box-ordinal-group: 10000000;
+    -webkit-order: 9999999;
+    order: 9999999;
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 20px;
+    flex: 0 0 20px;
+    width: 20px;
+    border-left: 1px solid #cccccc;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+.tr-combobox-trigger .tr-combobox-trigger-icon {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    vertical-align: middle;
+    border-top: 4px solid black;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+}
+.tr-combobox-trigger:hover,
+.tr-combobox.open .tr-combobox-trigger {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+.tr-combobox-dropdown {
+    display: none;
+    position: absolute;
+    background-color: white;
+    max-height: 300px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border: 1px solid #cccccc;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    min-height: 30px;
+    z-index: 1;
+}
+.tr-combobox-dropdown .tr-combobox-entry.tr-highlighted {
+    background-color: rgba(0, 120, 255, 0.2);
+}
+.tr-search-highlighted {
+    background-color: rgba(244, 195, 125, 0.7);
+    border-radius: 3px;
+    box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+}
+.tr-hidden {
+    display: none !important;
+}
+.tr-combobox-spinner,
+.tr-combobox-no-data {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    color: #999999;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+.combobox-entry.combobox-entry-icon-2-lines {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: stretch;
+    -webkit-align-items: stretch;
+    align-items: stretch;
+    padding: 1px;
+    font-size: 14px;
+    line-height: 15px;
+}
+.combobox-entry.combobox-entry-icon-2-lines.empty {
+    color: gray;
+}
+.combobox-entry.combobox-entry-icon-2-lines .img-wrapper {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 25px;
+    flex: 0 0 25px;
+    width: 25px;
+    height: 30px;
+    background-position: center;
+    background-size: cover;
+    border-radius: 3px;
+    border: 1px solid #cccccc;
+}
+.combobox-entry.combobox-entry-icon-2-lines .content-wrapper {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 0 auto;
+    flex: 1 0 auto;
+    margin-left: 5px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+.combobox-entry.combobox-entry-icon-2-lines .content-wrapper .main-line {
+    font-weight: 400;
+    line-height: 14px;
+}
+.combobox-entry.combobox-entry-icon-2-lines .content-wrapper .additional-info {
+    font-size: 90%;
+    color: #333;
+    margin-bottom: -1px;
+    font-weight: 200;
+}
+.combobox-entry.combobox-entry-icon-single-line {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: stretch;
+    -webkit-align-items: stretch;
+    align-items: stretch;
+    padding: 1px;
+    font-size: 14px;
+    line-height: 15px;
+}
+.combobox-entry.combobox-entry-icon-single-line.empty {
+    color: gray;
+}
+.combobox-entry.combobox-entry-icon-single-line .img-wrapper {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 24px;
+    flex: 0 0 24px;
+    height: 24px;
+    background-position: center;
+    background-size: cover;
+    border-radius: 3px;
+    border: 1px solid #cccccc;
+}
+.combobox-entry.combobox-entry-icon-single-line .content-wrapper {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 0 auto;
+    flex: 1 0 auto;
+    margin-left: 5px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    line-height: 14px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.combobox-entry.combobox-entry-single-line {
+    padding: 5px 6px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 15px;
+}
+.combobox-entry.combobox-entry-single-line .content-wrapper {
+    min-height: 15px;
+}
+.combobox-entry.combobox-entry-single-line.empty {
+    color: gray;
+}

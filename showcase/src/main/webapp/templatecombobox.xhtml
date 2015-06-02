@@ -64,24 +64,6 @@
                     styleClass="#{templateComboBoxShowCase.styleClass}"
                     comboBoxDataProvider="#{templateComboBoxShowCase.comboBoxDataProvider}"
                     >
-                <f:ajax event="keyup"
-                        execute="@this"
-                        render="output:outputComponent:outputValues output:other"
-                        listener="#{templateComboBoxShowCase.someListenerAction}"
-                        disabled="#{not templateComboBoxShowCase.ajax}" />
-                <f:ajax event="change"
-                        execute="@this"
-                        render="output:outputComponent:outputValues output:other"
-                        listener="#{templateComboBoxShowCase.someListenerAction}"
-                        disabled="#{not templateComboBoxShowCase.ajax}" />
-                <f:ajax event="query"
-                        execute="@this"
-                        render="output:outputComponent:outputValues output:other"
-                        listener="#{templateComboBoxShowCase.someListenerAction}"
-                        disabled="#{not templateComboBoxShowCase.ajax}" />
-                <f:validateLength minimum="2"
-                                  maximum="10"
-                                  disabled="#{not templateComboBoxShowCase.validation}" />
             </b:templatecombobox>
 
         </showcase:showcaseOuputComponent>

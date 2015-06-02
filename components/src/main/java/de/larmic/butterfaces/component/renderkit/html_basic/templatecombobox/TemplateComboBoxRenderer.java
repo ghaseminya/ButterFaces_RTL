@@ -44,7 +44,7 @@ public class TemplateComboBoxRenderer extends HtmlBasicRenderer {
 
         writer.startElement("input", component);
         writer.writeAttribute("type", "text", null);
-//        writer.writeAttribute("onclick", "jsf.ajax.request(this, event)", null);
+        writer.writeAttribute("name", comboBox.getClientId(), null);
         writer.endElement("input");
 
         new InnerComponentWrapperPartRenderer().renderInnerWrapperEnd(comboBox, writer);
@@ -60,8 +60,7 @@ public class TemplateComboBoxRenderer extends HtmlBasicRenderer {
             comboBox.getJsonpChild().setEntries(comboBoxEntries);
         }
 
-        RenderUtils.renderJQueryPluginCall(component.getClientId(), "input", "trivialcombobox({\n" +
-                "    idProperty: \"displayValue\",\n" +
+        RenderUtils.renderJQueryPluginCall(component.getClientId(), "input", "TrivialComboBox({\n" +
                 "    entries: " + TemplateComboBoxJsonpRenderer.createUpdateEntriesJson(comboBox.getJsonpChild().getEntries()) + ", " +
                 "    queryFunction: function(queryString) {\n" +
                 "        jsf.ajax.request(" + RenderUtils.createJQueryBySelector(component.getClientId(), "input") + "[0], event, {render:\"" + comboBox.getJsonpChild().getClientId() + "\", execute: \"" + component.getClientId() + "\", templateComboBoxQueryString: queryString});" +

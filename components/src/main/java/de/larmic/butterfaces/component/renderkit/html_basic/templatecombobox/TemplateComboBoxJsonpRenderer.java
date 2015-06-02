@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import de.larmic.butterfaces.component.base.renderer.HtmlBasicRenderer;
 import de.larmic.butterfaces.component.html.templatecombobox.HtmlTemplateComboBoxJsonp;
+import de.larmic.butterfaces.component.partrenderer.RenderUtils;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -33,9 +34,8 @@ public class TemplateComboBoxJsonpRenderer extends HtmlBasicRenderer {
         writer.startElement("div", jsonpComponent);
         writeIdAttribute(context, writer, jsonpComponent);
 
-        writer.startElement("script", jsonpComponent);
-        writer.writeText("update(" + createUpdateEntriesJson(jsonpComponent.getEntries()) + ");", jsonpComponent, null);
-        writer.endElement("script");
+        RenderUtils.renderJQueryPluginCall(component.getParent().getClientId(), "input", "TrivialComboBox().updateEntries("
+                + createUpdateEntriesJson(jsonpComponent.getEntries()) + ");", writer, component);
     }
 
     public static String createUpdateEntriesJson(List entries) {
