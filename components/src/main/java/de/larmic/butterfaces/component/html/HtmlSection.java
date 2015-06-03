@@ -20,6 +20,7 @@ public class HtmlSection extends UIComponentBase {
     protected static final String PROPERTY_BADGE_TEXT = "badgeText";
     protected static final String PROPERTY_STYLE_CLASS = "styleClass";
     protected static final String PROPERTY_STYLE = "style";
+    protected static final String PROPERTY_ANCHOR_ID = "anchorId";
 
 	public HtmlSection() {
 		super();
@@ -61,5 +62,13 @@ public class HtmlSection extends UIComponentBase {
 
     public void setBadgeText(final String badgeText) {
         this.updateStateHelper(PROPERTY_BADGE_TEXT, badgeText);
+    }
+
+    public String getAnchorId() {
+        return (String) this.getStateHelper().eval(PROPERTY_ANCHOR_ID);
+    }
+
+    public void setAnchorId(String anchorId) {
+        this.updateStateHelper(PROPERTY_ANCHOR_ID, anchorId);
     }
 }

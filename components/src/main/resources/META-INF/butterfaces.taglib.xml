@@ -622,6 +622,11 @@
          <type>java.lang.Boolean</type>
       </attribute>
       <attribute>
+         <name>anchorId</name>
+         <type>java.lang.String</type>
+         <description>Optional html anchor id</description>
+      </attribute>
+      <attribute>
          <name>style</name>
          <type>java.lang.String</type>
       </attribute>

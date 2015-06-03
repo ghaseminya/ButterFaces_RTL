@@ -1,15 +1,14 @@
 package de.larmic.butterfaces.component.renderkit.html_basic;
 
-import java.io.IOException;
+import de.larmic.butterfaces.component.base.renderer.HtmlBasicRenderer;
+import de.larmic.butterfaces.component.html.HtmlSection;
+import de.larmic.butterfaces.component.partrenderer.StringUtils;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 import javax.faces.render.FacesRenderer;
-
-import de.larmic.butterfaces.component.base.renderer.HtmlBasicRenderer;
-import de.larmic.butterfaces.component.html.HtmlSection;
-import de.larmic.butterfaces.component.partrenderer.StringUtils;
+import java.io.IOException;
 
 /**
  * Created by larmic on 31.07.14.
@@ -26,10 +25,10 @@ public class SectionRenderer extends HtmlBasicRenderer {
         }
 
         final ResponseWriter writer = context.getResponseWriter();
-        final HtmlSection fieldSet = (HtmlSection) component;
+        final HtmlSection section = (HtmlSection) component;
 
-        final String style = fieldSet.getStyle();
-        final String styleClass = fieldSet.getStyleClass();
+        final String style = section.getStyle();
+        final String styleClass = section.getStyleClass();
 
         writer.startElement(ELEMENT_SECTION, component);
 
@@ -44,7 +43,14 @@ public class SectionRenderer extends HtmlBasicRenderer {
             writer.writeAttribute(ATTRIBUTE_CLASS, "butter-component-section", "styleClass");
         }
 
-        this.encodeHeader(component, writer, fieldSet);
+        this.encodeHeader(component, writer, section);
+
+        if (StringUtils.isNotEmpty(section.getAnchorId())) {
+            writer.startElement(ELEMENT_SPAN, component);
+            writer.writeAttribute("id", section.getAnchorId(), "id");
+            writer.writeAttribute(ATTRIBUTE_CLASS, "anchor", "styleClass");
+            writer.endElement(ELEMENT_SPAN);
+        }
 
         writer.startElement(ELEMENT_DIV, component);
         writer.writeAttribute(ATTRIBUTE_CLASS, "butter-component-section-content", null);

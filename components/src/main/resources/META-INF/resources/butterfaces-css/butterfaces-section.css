@@ -21,3 +21,10 @@
 .butter-component-section-additional-header {
     float: right;
 }
+
+.butter-component-section .anchor {
+    display: block;
+    position: relative;
+    top: -25px;
+    visibility: hidden;
+}
