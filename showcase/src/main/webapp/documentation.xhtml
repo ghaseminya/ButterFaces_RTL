@@ -1,31 +1,29 @@
 <ui:composition template="/WEB-INF/templates/defaultComponentBase.xhtml"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:showcase="http://xmlns.jcp.org/jsf/composite/cc"
                 xmlns:b="http://butterfaces.larmic.de/components"
+                xmlns:showcase="http://xmlns.jcp.org/jsf/composite/cc"
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="header">
-        <strong>b:documentation</strong> renders a TODO
+        <strong>b:documentation</strong> TODO
+    </ui:define>
+
+    <ui:define name="tagsContainers">
     </ui:define>
 
     <ui:define name="output">
-
-        TODO
-
-        <b:activateLibraries />
 
     </ui:define>
 
     <ui:define name="other">
         <showcase:codeExamples component="#{documentationShowcase}"/>
+        <b:activateLibraries />
 
         <script type="text/javascript">
-            //<![CDATA[
             jQuery(document).ready(function () {
                 setActiveNavigation('documentation');
             });
-            //]]>
         </script>
     </ui:define>
 </ui:composition>
