@@ -10,10 +10,15 @@
     </ui:define>
 
     <ui:define name="tagsContainers">
+        <showcase:tagsContainer label="Tag attributes">
+            <showcase:tagBooleanControl label="rendered" value="#{documentationShowcase.rendered}"/>
+        </showcase:tagsContainer>
     </ui:define>
 
     <ui:define name="output">
-
+        <b:documentation rendered="#{documentationShowcase.rendered}">
+            Test
+        </b:documentation>
     </ui:define>
 
     <ui:define name="other">

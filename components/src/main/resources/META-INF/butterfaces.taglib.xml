@@ -637,6 +637,17 @@
    </tag>
 
    <tag>
+      <tag-name>documentation</tag-name>
+      <component>
+         <component-type>de.larmic.butterfaces.component.documentation</component-type>
+      </component>
+      <attribute>
+         <name>rendered</name>
+         <type>java.lang.Boolean</type>
+      </attribute>
+   </tag>
+
+   <tag>
       <tag-name>tooltip</tag-name>
       <component>
          <component-type>de.larmic.butterfaces.component.tooltip</component-type>
