@@ -26,7 +26,11 @@ public class DocumentationRenderer extends HtmlBasicRenderer {
         final ResponseWriter writer = context.getResponseWriter();
 
         writer.startElement(ELEMENT_DIV, component); // component
-        writer.writeAttribute("class", "butter-component-documentation", "styleClass");
+        writer.writeAttribute("class", "butter-component-documentation row", "styleClass");
+
+        writer.startElement(ELEMENT_DIV, component); // left content
+        writer.writeAttribute("class", "col-md-9 col-lg-10", "styleClass");
+        writer.writeAttribute("role", "main", null);
     }
 
 
@@ -40,6 +44,7 @@ public class DocumentationRenderer extends HtmlBasicRenderer {
 
         final ResponseWriter writer = context.getResponseWriter();
 
+        writer.endElement(ELEMENT_DIV); // left content
         writer.endElement(ELEMENT_DIV); // component
     }
 
