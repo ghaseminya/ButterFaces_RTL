@@ -65,7 +65,16 @@ public class DocumentationRenderer extends HtmlBasicRenderer {
         writer.writeAttribute("class", "hidden-print hidden-xs hidden-sm affix", "styleClass");
         writer.startElement("h4", component);
         writer.writeText("Content", null);
+        writer.endElement("h4");
+        encodeComplementaryChildren(component, writer);
+        writer.endElement(ELEMENT_NAV);
+
+        writer.endElement(ELEMENT_DIV);
+    }
+
+    private void encodeComplementaryChildren(UIComponent component, ResponseWriter writer) throws IOException {
         writer.startElement("ul", component);
+        writer.writeAttribute("class", "nav", "styleClass");
 
         for (UIComponent uiComponent : component.getChildren()) {
             if (uiComponent instanceof HtmlSection) {
@@ -76,6 +85,7 @@ public class DocumentationRenderer extends HtmlBasicRenderer {
                     writer.writeAttribute("href", "#" + section.getAnchorId(), null);
                     writer.writeText(section.getLabel(), null);
                     writer.endElement("a");
+                    encodeComplementaryChildren(section, writer);
                     writer.endElement("li");
                 }
 
@@ -83,11 +93,6 @@ public class DocumentationRenderer extends HtmlBasicRenderer {
         }
 
         writer.endElement("ul");
-        writer.endElement("h4");
-        writer.endElement(ELEMENT_NAV);
-
-
-        writer.endElement(ELEMENT_DIV);
     }
 
 }
