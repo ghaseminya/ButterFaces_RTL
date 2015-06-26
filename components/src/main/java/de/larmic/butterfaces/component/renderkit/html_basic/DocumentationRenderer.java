@@ -10,6 +10,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 import javax.faces.render.FacesRenderer;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by larmic on 31.07.14.
@@ -73,12 +75,13 @@ public class DocumentationRenderer extends HtmlBasicRenderer {
     }
 
     private void encodeComplementaryChildren(UIComponent component, ResponseWriter writer) throws IOException {
-        writer.startElement("ul", component);
-        writer.writeAttribute("class", "nav", "styleClass");
+        final List<HtmlSection> sections = findSectionChildren(component);
 
-        for (UIComponent uiComponent : component.getChildren()) {
-            if (uiComponent instanceof HtmlSection) {
-                final HtmlSection section = (HtmlSection) uiComponent;
+        if (!sections.isEmpty()) {
+            writer.startElement("ul", component);
+            writer.writeAttribute("class", "nav", "styleClass");
+
+            for (HtmlSection section : sections) {
                 if (StringUtils.isNotEmpty(section.getLabel()) && StringUtils.isNotEmpty(section.getAnchorId())) {
                     writer.startElement("li", component);
                     writer.startElement("a", component);
@@ -88,11 +91,21 @@ public class DocumentationRenderer extends HtmlBasicRenderer {
                     encodeComplementaryChildren(section, writer);
                     writer.endElement("li");
                 }
+            }
 
+            writer.endElement("ul");
+        }
+    }
+
+    private List<HtmlSection> findSectionChildren(final UIComponent component) {
+        final List<HtmlSection> sections = new ArrayList<>();
+
+        for (UIComponent uiComponent : component.getChildren()) {
+            if (uiComponent instanceof HtmlSection) {
+                sections.add((HtmlSection) uiComponent);
             }
         }
 
-        writer.endElement("ul");
+        return sections;
     }
-
 }
