@@ -7,8 +7,8 @@ import javax.faces.application.ResourceDependency;
 import javax.faces.component.FacesComponent;
 
 @ResourceDependencies({
-        @ResourceDependency(library = "butterfaces-css", name = "butterfaces-section.css", target = "head"),
-        @ResourceDependency(library = "butterfaces-configurable", name = "bootstrap.min.css", target = "head") })
+        @ResourceDependency(library = "butterfaces-configurable", name = "bootstrap.min.css", target = "head"),
+        @ResourceDependency(library = "butterfaces-configurable", name = "bootstrap.min.js", target = "head") })
 @FacesComponent(HtmlDocumentation.COMPONENT_TYPE)
 public class HtmlDocumentation extends UIComponentBase {
 
