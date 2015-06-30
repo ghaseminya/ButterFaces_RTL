@@ -18,6 +18,9 @@ public class HtmlDocumentation extends UIComponentBase {
 	public static final String COMPONENT_FAMILY = "de.larmic.butterfaces.component.family";
 	public static final String RENDERER_TYPE = "de.larmic.butterfaces.renderkit.html_basic.DocumentationRenderer";
 
+	protected static final String PROPERTY_STYLE_CLASS = "styleClass";
+	protected static final String PROPERTY_STYLE = "style";
+
 	public HtmlDocumentation() {
 		super();
 		this.setRendererType(RENDERER_TYPE);
@@ -27,5 +30,21 @@ public class HtmlDocumentation extends UIComponentBase {
 	public String getFamily() {
 		return COMPONENT_FAMILY;
 	}
+
+    public String getStyleClass() {
+        return (String) this.getStateHelper().eval(PROPERTY_STYLE_CLASS);
+    }
+
+    public void setStyleClass(final String styleClass) {
+        this.updateStateHelper(PROPERTY_STYLE_CLASS, styleClass);
+    }
+
+    public String getStyle() {
+        return (String) this.getStateHelper().eval(PROPERTY_STYLE);
+    }
+
+    public void setStyle(final String style) {
+        this.updateStateHelper(PROPERTY_STYLE, style);
+    }
 
 }

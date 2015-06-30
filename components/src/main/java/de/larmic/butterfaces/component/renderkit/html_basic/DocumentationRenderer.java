@@ -31,8 +31,20 @@ public class DocumentationRenderer extends HtmlBasicRenderer {
 
         final ResponseWriter writer = context.getResponseWriter();
 
+        final HtmlDocumentation documentation = (HtmlDocumentation) component;
+        final String style = documentation.getStyle();
+        final String styleClass = documentation.getStyleClass();
+
         writer.startElement(ELEMENT_DIV, component); // component
-        writer.writeAttribute("class", "butter-component-documentation row", "styleClass");
+        this.writeIdAttribute(context, writer, component);
+        if (StringUtils.isNotEmpty(style)) {
+            writer.writeAttribute(ATTRIBUTE_STYLE, style, "style");
+        }
+        if (StringUtils.isNotEmpty(styleClass)) {
+            writer.writeAttribute(ATTRIBUTE_CLASS, "butter-component-documentation row " + styleClass, "styleClass");
+        } else {
+            writer.writeAttribute(ATTRIBUTE_CLASS, "butter-component-documentation row", "styleClass");
+        }
 
         writer.startElement(ELEMENT_DIV, component); // left content
         writer.writeAttribute("class", "col-md-9 col-lg-10", "styleClass");
