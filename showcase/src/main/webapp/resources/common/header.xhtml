@@ -9,7 +9,7 @@
     <composite:implementation>
         <div class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
-                <div class="navbar-header">
+                <div class="navbar-header pull-right">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="sr-only">Navigation ein-/ausblenden</span>
                         <span class="icon-bar"></span>
@@ -21,65 +21,65 @@
                     </h:link>
                 </div>
 
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle arquillian_components" data-toggle="dropdown">Input component <span class="caret"></span></a>
+                <div class="collapse navbar-collapse ">
+                    <ul class="nav navbar-nav pull-right" style="text-align: right">
+                        <li class="dropdown pull-right">
+                            <a href="#" class="dropdown-toggle arquillian_components" data-toggle="dropdown">ماژول های ورودی <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li id="calendar"><h:link value="calendar" outcome="/calendar" title="Butterfaces calendar component" /></li>
-                                <li id="checkbox"><h:link value="checkbox" outcome="/checkbox" title="Butterfaces checkbox component"/></li>
-                                <li id="markdown"><h:link value="markdown" outcome="/markdown" title="Butterfaces text component"/></li>
-                                <li id="maskedtext"><h:link value="maskedtext" outcome="/maskedtext" title="Butterfaces masked text component" /></li>
-                                <li id="number"><h:link value="number" outcome="/number" styleClass="arquillian_number_header" title="Butterfaces number component"/></li>
-                                <li id="radiobox"><h:link value="radiobox" outcome="/radiobox" styleClass="newFeature" title="Butterfaces radio box component"/></li>
-                                <li id="secret"><h:link value="secret" outcome="/secret" title="Butterfaces text area component"/></li>
-                                <li id="tags"><h:link value="tags" outcome="/tags" title="Butterfaces tags component"/></li>
-                                <li id="text"><h:link value="text" outcome="/text" title="Butterfaces text component" /></li>
-                                <li id="textarea"><h:link value="textarea" outcome="/textarea" title="Butterfaces text component"/></li>
-                                <li id="treebox"><h:link value="treebox" outcome="/treebox" styleClass="newFeature" title="Butterfaces treebox component"/></li>
+                                <li  id="calendar"><h:link style="text-align: right" value="تقویم" outcome="/calendar" title="Butterfaces calendar component" /></li>
+                                <li id="checkbox"><h:link style="text-align: right" value="چک باکس" outcome="/checkbox" title="Butterfaces checkbox component"/></li>
+                                <li id="markdown"><h:link style="text-align: right" value="مارک داون" outcome="/markdown" title="Butterfaces text component"/></li>
+                                <li id="maskedtext"><h:link style="text-align: right" value="متن ماسک شده" outcome="/maskedtext" title="Butterfaces masked text component" /></li>
+                                <li id="number"><h:link style="text-align: right" value="عدد" outcome="/number" styleClass="arquillian_number_header" title="Butterfaces number component"/></li>
+                                <li id="radiobox"><h:link style="text-align: right" value="رادیوباکس" outcome="/radiobox" styleClass="newFeature" title="Butterfaces radio box component"/></li>
+                                <li id="secret"><h:link style="text-align: right" value="رمز شده" outcome="/secret" title="Butterfaces text area component"/></li>
+                                <li id="tags"><h:link style="text-align: right" value="تگ ها" outcome="/tags" title="Butterfaces tags component"/></li>
+                                <li id="text"><h:link style="text-align: right" value="متن" outcome="/text" title="Butterfaces text component" /></li>
+                                <li id="textarea"><h:link style="text-align: right" value="فضای متن" outcome="/textarea" title="Butterfaces text component"/></li>
+                                <li id="treebox"><h:link style="text-align: right" value="درخت" outcome="/treebox" styleClass="newFeature" title="Butterfaces treebox component"/></li>
                             </ul>
                         </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle arquillian_container" data-toggle="dropdown">Container <span class="caret"></span></a>
+                        <li class="dropdown pull-right">
+                            <a href="#" class="dropdown-toggle arquillian_container" data-toggle="dropdown">حامل ها <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li id="labeledContainer"><h:link value="labeledContainer" styleClass="arquillian_labeledContainer_header"  outcome="/labeledContainer" title="Butterfaces labeled container component"/></li>
-                                <li id="prettyprint"><h:link value="prettyprint" styleClass="arquillian_prettyprint_header" outcome="/prettyprint" title="Butterfaces google pretty print component"/></li>
-                                <li id="section"><h:link value="section" styleClass="arquillian_section_header" outcome="/section" title="Butterfaces html section component"/></li>
+                                <li id="labeledContainer"><h:link style="text-align: right" value="حامل برچسب دار" styleClass="arquillian_labeledContainer_header"  outcome="/labeledContainer" title="Butterfaces labeled container component"/></li>
+                                <li id="prettyprint"><h:link style="text-align: right" value="پرینت زیبای کدها" styleClass="arquillian_prettyprint_header" outcome="/prettyprint" title="Butterfaces google pretty print component"/></li>
+                                <li id="section"><h:link style="text-align: right" value="بخش ها" styleClass="arquillian_section_header" outcome="/section" title="Butterfaces html section component"/></li>
                             </ul>
                         </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle arquillian_iteration" data-toggle="dropdown">Data iteration <span class="caret"></span></a>
+                        <li class="dropdown pull-right">
+                            <a href="#" class="dropdown-toggle arquillian_iteration" data-toggle="dropdown">تکرار داده ای <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li id="repeat"><h:link value="repeat" styleClass="arquillian_repeat_header newFeature" outcome="/repeat" title="Butterfaces repeat component"/></li>
-                                <li id="table"><h:link value="table" styleClass="arquillian_table_header newFeature" outcome="/table" title="Butterfaces table component"/></li>
-                                <li id="tree"><h:link value="tree" styleClass="arquillian_tree_header" outcome="/tree" title="Butterfaces tree component"/></li>
+                                <li id="repeat"><h:link style="text-align: right" value="تکرار" styleClass="arquillian_repeat_header newFeature" outcome="/repeat" title="Butterfaces repeat component"/></li>
+                                <li id="table"><h:link style="text-align: right" value="جدول" styleClass="arquillian_table_header newFeature" outcome="/table" title="Butterfaces table component"/></li>
+                                <li id="tree"><h:link style="text-align: right" value="درخت" styleClass="arquillian_tree_header" outcome="/tree" title="Butterfaces tree component"/></li>
                             </ul>
                         </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle arquillian_action" data-toggle="dropdown">Actions <span class="caret"></span></a>
+                        <li class="dropdown pull-right">
+                            <a href="#" class="dropdown-toggle arquillian_action" data-toggle="dropdown">اکشن ها <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li id="commandLink"><h:link value="commandLink" styleClass="arquillian_link_header" outcome="/commandLink" title="Butterfaces command link and button component"/></li>
+                                <li id="commandLink"><h:link style="text-align: right" value="لینک دستوری" styleClass="arquillian_link_header" outcome="/commandLink" title="Butterfaces command link and button component"/></li>
                             </ul>
                         </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle arquillian_misc" data-toggle="dropdown">Miscellaneous <span class="caret"></span></a>
+                        <li class="dropdown pull-right">
+                            <a href="#" class="dropdown-toggle arquillian_misc" data-toggle="dropdown">دیگر <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li id="activateLibraries"><h:link value="activateLibraries" styleClass="arquillian_activateLibraries_header" outcome="/activateLibraries" title="Butterfaces activate libraries component"/></li>
-                                <li id="autoComplete"><h:link value="autoComplete" styleClass="arquillian_autocomplete_header"  outcome="/autoComplete" title="Butterfaces auto complete component"/></li>
-                                <li id="defaultAction"><h:link value="defaultAction" styleClass="arquillian_defaultAction_header" outcome="/defaultAction" title="Butterfaces default action component"/></li>
-                                <li id="messages"><h:link value="messages" styleClass="arquillian_messages_header"  outcome="/messages" title="Butterfaces messages component"/></li>
-                                <li id="modalPanel"><h:link value="modalPanel" styleClass="arquillian_modalPanel_header"  outcome="/modalPanel" title="Butterfaces modal panel component"/></li>
-                                <li id="staticLabelWidth"><h:link value="staticLabelWidth" outcome="/layout/staticLabelWidth" title="Butterfaces static label width"/></li>
-                                <li id="tooltip"><h:link value="tooltip" styleClass="arquillian_tooltip_header"  outcome="/tooltip" title="Butterfaces tooltip component"/></li>
-                                <li id="waitingPanel"><h:link value="waitingPanel" styleClass="arquillian_waitingPanel_header" outcome="/waitingPanel" title="Butterfaces waiting panel component"/></li>
+                                <li id="activateLibraries"><h:link style="text-align: right" value="کتابخانه های فعال سازی" styleClass="arquillian_activateLibraries_header" outcome="/activateLibraries" title="Butterfaces activate libraries component"/></li>
+                                <li id="autoComplete"><h:link style="text-align: right" value="خود پرشونده" styleClass="arquillian_autocomplete_header"  outcome="/autoComplete" title="Butterfaces auto complete component"/></li>
+                                <li id="defaultAction"><h:link style="text-align: right" value="اکشن های پیش فرض" styleClass="arquillian_defaultAction_header" outcome="/defaultAction" title="Butterfaces default action component"/></li>
+                                <li id="messages"><h:link style="text-align: right" value="پیام ها" styleClass="arquillian_messages_header"  outcome="/messages" title="Butterfaces messages component"/></li>
+                                <li id="modalPanel"><h:link style="text-align: right" value="پنل های افتادنی" styleClass="arquillian_modalPanel_header"  outcome="/modalPanel" title="Butterfaces modal panel component"/></li>
+                                <li id="staticLabelWidth"><h:link style="text-align: right" value="برچسب های ثابت" outcome="/layout/staticLabelWidth" title="Butterfaces static label width"/></li>
+                                <li id="tooltip"><h:link style="text-align: right" value="تولتیپ" styleClass="arquillian_tooltip_header"  outcome="/tooltip" title="Butterfaces tooltip component"/></li>
+                                <li id="waitingPanel"><h:link style="text-align: right" value="پنل انتظار" styleClass="arquillian_waitingPanel_header" outcome="/waitingPanel" title="Butterfaces waiting panel component"/></li>
                             </ul>
                         </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle arquillian_misc" data-toggle="dropdown">jQuery plugins <span class="caret"></span></a>
+                        <li class="dropdown pull-right">
+                            <a href="#" class="dropdown-toggle arquillian_misc" data-toggle="dropdown">پلاگین های jQuery <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li id="itemFilterField"><h:link value="itemFilterField" outcome="/jquery/itemFilterField" title="Butterfaces JQuery plugin client side filtering component"/></li>
-                                <li id="overlay"><h:link value="overlay" outcome="/jquery/overlay" title="Butterfaces JQuery plugin disable and enable elements component"/></li>
-                                <li id="scroll"><h:link value="scroll" outcome="/jquery/scroll" title="Butterfaces JQuery plugin scroll component"/></li>
+                                <li id="itemFilterField"><h:link style="text-align: right" value="فیلترها" outcome="/jquery/itemFilterField" title="Butterfaces JQuery plugin client side filtering component"/></li>
+                                <li id="overlay"><h:link style="text-align: right" value="آورلی" outcome="/jquery/overlay" title="Butterfaces JQuery plugin disable and enable elements component"/></li>
+                                <li id="scroll"><h:link style="text-align: right" value="اسکرول" outcome="/jquery/scroll" title="Butterfaces JQuery plugin scroll component"/></li>
                             </ul>
                         </li>
                     </ul>

@@ -6,9 +6,11 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="header">
-        <strong>b:number</strong>: The number tag renders an HTML input element of the type "text".
+        <strong>b:number</strong>: 
+        تگ number  یک دیتا اینپوت متنی html  را محیا می کند.
+        
     </ui:define>
-
+    
     <ui:define name="tagsContainers">
         <common:tagsContainer label="Tag attributes">
             <common:tagStringControl label="label" value="#{numberShowcase.label}"/>
@@ -70,9 +72,10 @@
             </b:number>
         </common:showcaseOuputComponent>
     </ui:define>
-
+    
     <ui:define name="other">
         <common:codeExamples component="#{numberShowcase}"/>
         <b:activateLibraries />
     </ui:define>
+    
 </ui:composition>
